@@ -1,3 +1,4 @@
+import { AnyAction } from "redux";
 import { FETCHED_WEATHER } from "../helper/constants";
 
 const initialState = {
@@ -5,11 +6,14 @@ const initialState = {
   fetched: null,
 };
 
-export default (state = initialState, action) => {
+export default function weatherReducer(
+  state = initialState,
+  action: AnyAction
+) {
   switch (action.type) {
     case FETCHED_WEATHER:
       return { data: action.payload, fetched: true };
     default:
       return state;
   }
-};
+}

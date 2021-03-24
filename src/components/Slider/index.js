@@ -66,6 +66,17 @@ class Slider extends Component {
             index === this.state.scrollPosition ? "active" : 0
           }`}
           key={index}
+          onClick={() =>
+            this.setState(
+              {
+                scrollPosition: index,
+              },
+              () =>
+                getWeatherByDay(
+                  day.date.currentDate.toISOString().split("T")[0]
+                )
+            )
+          }
         >
           {day.days}
         </div>

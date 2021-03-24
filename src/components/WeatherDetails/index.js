@@ -1,5 +1,3 @@
-import React from "react";
-
 import "./index.scss";
 
 const _renderWeatherDetails = (weatherDetails) => {
@@ -9,17 +7,20 @@ const _renderWeatherDetails = (weatherDetails) => {
     ? Object.keys(weatherDetails.main).map((it, index) => {
         const measure =
           it.charAt(0).toUpperCase() + it.slice(1).replace(/_/g, " ");
-        const editMeasure =
-          measure.indexOf("Temp") > -1 ? 'c' : '';
+        const editMeasure = measure.indexOf("Temp") > -1 ? "c" : "";
         return (
           <li className="weather-details__list-item" key={index}>
-            {measure} : {Object.values(weatherDetails.main)[index].toFixed(1)}{" "}
+            {measure} : {Object.values(weatherDetails.main)[index].toFixed(0)}{" "}
             {editMeasure}
           </li>
         );
       })
     : emptyArray.map((it, index) => {
-        return <li key={index}>___________</li>;
+        return (
+          <li key={index} className="weather-details__list-item">
+            ___________
+          </li>
+        );
       });
 };
 
@@ -27,7 +28,14 @@ function WeatherDetails({ weatherDetailsData }) {
   return (
     <div className="weather-details">
       <h1 className="weather-details__title">Weather Details:</h1>
-      <ul>{_renderWeatherDetails(weatherDetailsData)}</ul>
+      <ul>
+        {weatherDetailsData && weatherDetailsData.main && (
+          <li className="weather-details__list-item">
+            City : {weatherDetailsData.city}
+          </li>
+        )}
+        {_renderWeatherDetails(weatherDetailsData)}
+      </ul>
     </div>
   );
 }

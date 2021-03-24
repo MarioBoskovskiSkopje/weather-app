@@ -1,8 +1,10 @@
-import React from "react";
+import { useDispatch } from "react-redux";
+import { weatherDetails } from "../../actions";
 
 import "./index.scss";
 
-function Weather({ weather, weatherDetails }) {
+const Weather = ({ weather }) => {
+  const dispatch = useDispatch();
   const icon =
     "http://openweathermap.org/img/w/" + weather.weather[0].icon + ".png";
 
@@ -12,9 +14,9 @@ function Weather({ weather, weatherDetails }) {
         src={icon}
         className="weather-icon"
         alt="icon"
-        onClick={() => weatherDetails(weather)}
+        onClick={() => dispatch(weatherDetails(weather))}
       />
     </div>
   );
-}
+};
 export default Weather;

@@ -1,14 +1,16 @@
 .weather-details {
-  padding: 2rem 2rem 0 2rem;
+  padding: 0 2rem 0 2rem;
   background-color: white;
   background-image: url("../../assets/weather-bg.jpeg");
-  width: 35rem;
   &__title {
     color: wheat;
+    margin-top: 0;
+    padding-top: 1rem;
+    font-size: 1.2rem;
   }
   &__list-item {
     color: wheat;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-family: "Roboto";
     font-weight: 800;
   }

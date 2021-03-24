@@ -1,5 +1,5 @@
 import { Provider } from "react-redux";
-import Main from "./components/Main";
+import Main from "./components/Main/index";
 import configureStore from "./store/configureStore";
 
 const store = configureStore();
